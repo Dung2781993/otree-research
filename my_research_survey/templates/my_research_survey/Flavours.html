@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Flavour
+{% endblock %}
+
+{% block content %}
+	<h3>Rank the flavours</h3>
+	<p>{% formfield player.chocolate %}</p>
+	<p>{% formfield player.vanilla %}</p>
+    <p>{% formfield player.strawberry %}</p>
+	<p>{% formfield player.coffee %}</p>
+	<p>{% formfield player.banana %}</p>
+	<p>{% formfield player.walnut %}</p>
+	{% next_button %}
+{% endblock %}

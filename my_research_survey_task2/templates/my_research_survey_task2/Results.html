@@ -1,0 +1,106 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Result
+{% endblock %}
+
+{% block content %}
+	<table class="table">
+		<h4>Outcome</h4>
+		<br/>
+		<p>Compare flavour:	{{1st}} and {{2nd}}</p>
+		{% for p in all_players %}
+		<tr>
+			<th>Flavour</th>
+			<th>Your preference</th>
+		</tr>
+		<tr>
+			<td>{{1st}}</td>
+			<td>
+				{{player_first_choice}}
+			</td>
+		</tr>
+		<tr>
+			<td>{{2nd}}</td>
+			<td>
+				{{player_second_choice}}
+			</td>
+		</tr>
+		{% endfor %}
+	</table>
+	
+	<br/>
+	<h4>We are pairing {{1st}} and {{2nd}} </h4>
+	<br/>
+	<p>
+		{% for p in all_players %}
+			{% if group_choice > 0 %}
+				{% if p.first_choice > p.second_choice %}
+					{% if p.is_satisfied %}
+					<label>
+						Congratulations, you ranked the flavours {{1st}} and {{2nd}} in the same order as the majority of people.
+						If this task is chosen for payment, you will receive a bonus payment of {{total_payoff}} points
+					</label>
+					{% else %}
+					<label>
+						Unfortunately, you failed to complete this task successfully. You were required to assign the numbers 1-6 to all the flavours.
+						You may have not assigned a number to a flavour or you may have assigned the same number to two different flavours.
+						If this task is chosen for payment, you will receive no bonus
+					</label>
+					{% endif %}
+				{% else %}
+					{% if p.is_satisfied %}
+					<label>
+						Unfortunately, you ranked the flavours {{1st}} and {{2nd}} in a different order from the majority of people. 
+						If this task is chosen for payment, you will receive no bonus.
+					</label>
+					{% else %}
+					<label>
+						Unfortunately, you failed to complete this task successfully. You were required to assign the numbers 1-6 to all the flavours.
+						You may have not assigned a number to a flavour or you may have assigned the same number to two different flavours.
+						If this task is chosen for payment, you will receive no bonus
+					</label>
+					{% endif %}
+				{% endif %}
+			{% elif group_choice < 0 %}
+				{% if p.first_choice < p.second_choice %}
+					{% if p.is_satisfied %}
+					<label>
+						Congratulations, you ranked the flavours {{1st}} and {{2nd}} in the same order as the majority of people.
+						If this task is chosen for payment, you will receive a bonus payment of {{total_payoff}} points (choice)
+					</label>
+					{% else %}
+					<label>
+						Unfortunately, you failed to complete this task successfully. You were required to assign the numbers 1-6 to all the flavours.
+						You may have not assigned a number to a flavour or you may have assigned the same number to two different flavours.
+						If this task is chosen for payment, you will receive no bonus.
+					</label>
+					{% endif %}
+				{% else %}
+					{% if p.is_satisfied %}
+					<label>
+						Unfortunately, you ranked the flavours {{1st}} and {{2nd}} in a different order from the majority of people. 
+						If this task is chosen for payment, you will receive no bonus.
+					</label>
+					{% else %}
+					<label>
+						Unfortunately, you failed to complete this task successfully. You were required to assign the numbers 1-6 to all the flavours.
+						You may have not assigned a number to a flavour or you may have assigned the same number to two different flavours.
+						If this task is chosen for payment, you will receive no bonus.
+					</label>
+					{% endif %}
+				{% endif %}
+			{% else %}
+				<label>Unfortunately, you failed to complete this task successfully. You were required to assign the numbers 1-6 to all the flavours.
+						You may have not assigned a number to a flavour or you may have assigned the same number to two different flavours.
+						If this task is chosen for payment, you will receive no bonus.
+				</label>
+			{% endif %}
+		{% endfor %}		
+	</p> 
+	
+    {% next_button %}
+{% endblock %}
+
+

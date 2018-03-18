@@ -1,0 +1,23 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Flavour
+{% endblock %}
+
+
+{% block content %}
+	<p>
+		You will be shown a list of six ice-cream flavours. Your task is to rank the ice-cream flavours 
+		according to your personal perference. Your most favorite should be assigned number 1 and the least
+		favorite flavour should be assigned number 6.
+	</p>
+	<h3>Rank the flavours</h3>
+	<p> {% formfield player.apple_pie %}</p>
+	<p> {% formfield player.salted_coconut_and_mango_salsa %}</p>
+    <p> {% formfield player.milk_chocolate_with_choc_peanut_fudge %}</p>
+	<p> {% formfield player.poached_figs_in_marsala %}</p>
+	<p> {% formfield player.pear_and_rhubarb %}</p>
+	<p> {% formfield player.lemon %}</p>
+	{% next_button %}
+{% endblock %}

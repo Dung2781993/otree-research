@@ -1,0 +1,28 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Result
+{% endblock %}
+
+{% block content %}
+	
+	<tr>
+		<th>Outcome</th>
+	</tr>
+	<tr>
+	<td>
+	{% if player.is_satisfied %}
+		Congratulations, you completed this task successfully. If this task is chosen for payment,
+		you will receive a bonus payment of {{total_payoff}} points
+	{% else %}
+		Unfortunately, you failed to complete this task successfully. You were required to assign
+		the numbers 1–6 to all the flavours. You may have not assigned a number to a flavour or
+		you may have assigned the same number to two different flavours. If this task is chosen for
+		payment, you will receive no bonus.
+	{% endif %}
+	</td>
+	</tr>
+{% endblock %}
+
+

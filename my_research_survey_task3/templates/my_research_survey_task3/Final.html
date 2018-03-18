@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Your choice
+{% endblock %}
+
+{% block content %}
+	{% for p in all_players %}
+		{% if p.is_satisfied %}
+			<p>Congratulations, you completed this task successfully. If this task is chosen for payment,
+				you will receive a bonus payment of 150 points.
+			</p>
+		{% else %}
+			<p>Unfortunately, you failed to complete this task successfully. You were required to assign
+				the numbers 1–6 to all the flavours. You may have not assigned a number to a flavour or
+				you may have assigned the same number to two different flavours. If this task is chosen for
+				payment, you will receive no bonus.
+			</p>
+		{% endif %}
+	{% endfor %}
+	<p>Your rank on group's first choice is {{player_first_choice}}</p>
+	<p>Your rank on group's second choice is {{player_second_choice}}</p>
+    {% next_button %}
+{% endblock %}

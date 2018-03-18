@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+<div class="Instruction well well-lg">
+	<h3 class="panel-sub-heading">
+		Instructions
+	</h3>
+<p>
+	Rank the flavours base on way that you believe most other people will rank them.
+</p>
+<p>
+	You will be shown a list of six ice-cream flavours. Your task is to rank the ice-cream flavours 
+	according to way that you believe most other people will rank them. You must use all the number 1 to 6.
+	
+	Note that your answers to the previous task are not used in working out the majority ranking. 
+	We will only take into account the answers given in this task.
+</p>
+</div>
+    {% next_button %}
+{% endblock %}

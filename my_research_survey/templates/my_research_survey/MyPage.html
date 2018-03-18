@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+<div class="Instruction well well-lg">
+	<h3 class="panel-sub-heading">
+		Instructions
+	</h3>
+	<p>
+		You will be shown a list of six ice-cream flavours. Your task is to rank the ice-cream flavours 
+		according to your personal perference. Your most favorite should be assigned number 1 and the least
+		favorite flavour should be assigned number 6.
+	</p>
+</div>
+    {% next_button %}
+{% endblock %}
